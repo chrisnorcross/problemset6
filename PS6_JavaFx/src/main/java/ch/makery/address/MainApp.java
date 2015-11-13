@@ -45,15 +45,20 @@ public class MainApp extends Application {
      * Constructor
      */
     public MainApp() {
-        // Add some sample data
-    	
-    	ArrayList<PersonDomainModel> people = PersonDAL.getPersons();
-    	
-    	for (PersonDomainModel p: people)
-    	{
-    		personData.add(new Person(p.getFirstName(),p.getLastName(), p.getStreet(), p.getPostalCode(),p.getCity(), p.getBirthday()));
-    	}
+        RefreshPersonTable();
     }
+   public void RefreshPersonTable(){
+	   {
+	        // Add some sample data
+	    	personData.clear();
+	    	ArrayList<PersonDomainModel> people = PersonDAL.getPersons();
+	    	
+	    	for (PersonDomainModel p: people)
+	    	{
+	    		personData.add(new Person(p.getFirstName(),p.getLastName(), p.getStreet(), p.getPostalCode(),p.getCity(), p.getBirthday()));
+	    	}
+	    }
+   }
 
     public ObservableList<Person> getPersonData() {
         return personData;
